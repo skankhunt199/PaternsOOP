@@ -8,6 +8,7 @@ namespace PaternsOOP
     {
         private static FoodType _foodType = FoodType.Неизвестно;
         private static PizzaType _pizzaType = PizzaType.ЧетыреСыра;
+        private static BurgerSize _burgerSize = BurgerSize.Большой;
         private static List<Topping> _toppings = [];
         private static List<ExtraTopping> _extraToppings = [];
 
@@ -21,8 +22,8 @@ namespace PaternsOOP
             ChooseToppings();
             ChooseExstraToppings();
 
-            var factory = new FoodFactory();
-            var food = factory.CreateFood(_foodType, _toppings, _extraToppings, _pizzaType);
+            var kitchen = new FoodFactory();
+            var food = kitchen.CreateFood(_foodType, _toppings, _extraToppings, _pizzaType, _burgerSize);
 
             PaymentFood(food);
         }
@@ -49,6 +50,18 @@ namespace PaternsOOP
                         break;
                 }
             }
+        }
+
+        private static void ChooseBurgerSize()
+        {
+            Console.WriteLine("\nВыберите размер бургера:");
+            Console.WriteLine(string.Join("\n", Enum.GetValues<BurgerSize>().Select((t, i) => $"{i + 1}. {t}")));
+            string? burgerSizeInput = Console.ReadLine();
+            if (string.IsNullOrEmpty(burgerSizeInput)) return;
+            var burgerSizeNumbers = burgerSizeInput
+                .Split([',', ' ', '.'], StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => s.Trim());
+            _burgerSize = Enum.Parse<BurgerSize>(burgerSizeNumbers.First());
         }
 
         private static void ChooseExstraToppings()
@@ -99,6 +112,7 @@ namespace PaternsOOP
                         case 1:
                             _foodType = FoodType.Бургер;
                             Console.WriteLine("Вы выбрали бургер.");
+                            ChooseBurgerSize();
                             break;
                         case 2:
                             _foodType = FoodType.Пицца;

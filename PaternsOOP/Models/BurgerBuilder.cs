@@ -21,8 +21,10 @@ namespace PaternsOOP.Models
             _burger.ExtraToppings = [.. extraToppings];
             return this;
         }
-        public Burger GetBurger() => _burger;
-
-        public override string ToString() => $"{_burger.Size} {_burger.Name} собран!";
+        public Burger GetBurger() 
+        {
+            Console.WriteLine($"\nОтвет от BurgerBuilder: {_burger.Size} {_burger.Name} собран!");
+            return _burger;
+        }
     }
 }

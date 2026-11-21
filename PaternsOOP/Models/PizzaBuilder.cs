@@ -21,8 +21,10 @@ namespace PaternsOOP.Models
             _pizza.ExtraToppings = [.. extraToppings];
             return this;
         }
-        public Pizza GetPizza() => _pizza;
-
-        public override string ToString() => $"{_pizza.Name} {_pizza.Type} собрана!";
+        public Pizza GetPizza()
+        {
+            Console.WriteLine($"\nОтвет от PizzaBuilder: {_pizza.Name} {_pizza.Type} собрана!");
+            return _pizza;
+        }
     }
 }
