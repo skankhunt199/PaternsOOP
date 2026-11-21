@@ -56,13 +56,12 @@ namespace PaternsOOP
             Console.WriteLine("\nВыберите дополнительные ингредиенты (через запятую, например: 1,2,3...):");
             Console.WriteLine(string.Join("\n", Enum.GetValues<ExtraTopping>().Select((t, i) => $"{i + 1}. {t}")));
             string? extraToppingInput = Console.ReadLine();
-            if (!string.IsNullOrEmpty(extraToppingInput))
-            {
-                var extraToppingNumbers = extraToppingInput
-                    .Split([',', ' ', '.'], StringSplitOptions.RemoveEmptyEntries)
-                    .Select(s => s.Trim());
-                _extraToppings = [.. extraToppingNumbers.Select(s => Enum.Parse<ExtraTopping>(s))];
-            }
+            if (string.IsNullOrEmpty(extraToppingInput)) return;
+            var extraToppingNumbers = extraToppingInput
+                .Split([',', ' ', '.'], StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => s.Trim());
+            _extraToppings = [.. extraToppingNumbers.Select(s => Enum.Parse<ExtraTopping>(s))];
+
         }
         private static void ChooseToppings()
         {
