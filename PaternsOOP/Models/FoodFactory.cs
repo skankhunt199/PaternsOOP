@@ -9,6 +9,7 @@ namespace PaternsOOP.Models
         public IFood CreateFood(FoodType foodType, IEnumerable<Topping> toppings, IEnumerable<ExtraTopping> extraToppings,
             PizzaType pizzaType = PizzaType.ЧетыреСыра, BurgerSize burgerSize = BurgerSize.Большой)
         {
+            Console.WriteLine($"\nОтвет от FoodFactory: выбран тип еды: {foodType}");
             IFood food = foodType switch
             {
                 FoodType.Бургер => _chef.CookBurger(burgerSize, toppings, extraToppings),
@@ -16,7 +17,7 @@ namespace PaternsOOP.Models
 
                 _ => throw new ArgumentException("Неизвестный тип еды"),
             };
-            Console.WriteLine($"Ответ от FoodFactory: выбран тип еды: {foodType}. Еда приготовлена и готова к выдаче!");
+            Console.WriteLine($"Ответ от FoodFactory: Еда приготовлена и готова к выдаче!");
             return food;
         }
     }

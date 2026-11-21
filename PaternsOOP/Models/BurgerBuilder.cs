@@ -23,7 +23,7 @@ namespace PaternsOOP.Models
         }
         public Burger GetBurger() 
         {
-            Console.WriteLine($"\nОтвет от BurgerBuilder: {_burger.Size} {_burger.Name} собран!");
+            Console.WriteLine($"Ответ от BurgerBuilder: {_burger.Size} {_burger.Name} собран!");
             return _burger;
         }
     }

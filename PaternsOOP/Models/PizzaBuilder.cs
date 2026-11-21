@@ -23,7 +23,7 @@ namespace PaternsOOP.Models
         }
         public Pizza GetPizza()
         {
-            Console.WriteLine($"\nОтвет от PizzaBuilder: {_pizza.Name} {_pizza.Type} собрана!");
+            Console.WriteLine($"Ответ от PizzaBuilder: {_pizza.Name} {_pizza.Type} собрана!");
             return _pizza;
         }
     }
